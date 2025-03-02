@@ -1,11 +1,14 @@
+// Returns a random value from 0 - 2 for the computer's choice
 function getComputerChoice() {
     return Math.floor(Math.random() * 3);
 }
 
+// Takes user input from 0 - 2 and returns the value
 function getHumanChoice() {
     return parseInt(prompt("Enter your choice from 0 to 2. (0 = rock) (1 = paper) (2 = scissors): "));
 }
 
+// Compares the inputs and returns the results: (0 = loss) (1 = win) (2 = draw)
 function playRound(humanChoice, computerChoice) {
     console.log("You picked: ");
     if (humanChoice === 0) {
@@ -59,6 +62,7 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+// Variables
 let humanScore = 0;
 let computerScore = 0;
 
@@ -68,7 +72,10 @@ let computerChoice = 0;
 console.log("The game is a first to 5. Goodluck and beat that computer!");
 let result = 0;
 
-while (humanScore < 5 && computerScore < 5) {    
+// Main game loop
+while (humanScore < 5 && computerScore < 5) {   
+
+    // Ensures valid user input
     while (true) {
         humanChoice = getHumanChoice();
         if (humanChoice >= 0 && humanChoice <= 2) {
@@ -78,9 +85,14 @@ while (humanScore < 5 && computerScore < 5) {
             console.log("invalid input. enter the value again.");
         }
     }
+
+    // Assigns a random value to computerChoice
     computerChoice = getComputerChoice();
+
+    // Assigns the game result to result
     result = playRound(humanChoice, computerChoice);
 
+    // Increases scores based on the victor
     if (result === 1) {
         humanScore++;
     }
@@ -92,6 +104,7 @@ while (humanScore < 5 && computerScore < 5) {
     console.log("You: ", humanScore, " Computer: ", computerScore);
 }
 
+// Outputs a message based on the human and computer scores
 if (humanScore === 5) {
     console.log("YOU WIN!!");
 }
