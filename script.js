@@ -63,27 +63,42 @@ let humanScore = 0;
 let computerScore = 0;
 
 let humanChoice = 0;
-let computerChoice = getComputerChoice();
+let computerChoice = 0;
 
-while (true) {
-    humanChoice = getHumanChoice();
-    if (humanChoice >= 0 && humanChoice <= 2) {
-        break;
-    }
-    else {
-        console.log("invalid input. enter the value again.");
-    }
-}
-
+console.log("The game is a first to 5. Goodluck and beat that computer!");
 let result = 0;
 
-while (humanScore < 5 || computerScore < 5) {
+while (humanScore < 5 && computerScore < 5) {    
+    while (true) {
+        humanChoice = getHumanChoice();
+        if (humanChoice >= 0 && humanChoice <= 2) {
+            break;
+        }
+        else {
+            console.log("invalid input. enter the value again.");
+        }
+    }
+    computerChoice = getComputerChoice();
     result = playRound(humanChoice, computerChoice);
-    
+
     if (result === 1) {
         humanScore++;
     }
     else if (result === 0) {
         computerScore++;
     }
+
+    console.log("Score: ");
+    console.log("You: ", humanScore, " Computer: ", computerScore);
 }
+
+if (humanScore === 5) {
+    console.log("YOU WIN!!");
+}
+else {
+    console.log("computer wins...");
+}
+
+console.log ("Final Score: ");
+console.log ("You: ", humanScore);
+console.log("Computer: ", computerScore);
