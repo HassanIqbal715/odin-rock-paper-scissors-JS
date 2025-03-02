@@ -75,4 +75,4 @@ while (true) {
     }
 }
 
-playRound(humanChoice, computerChoice);
+let result = playRound(humanChoice, computerChoice);
