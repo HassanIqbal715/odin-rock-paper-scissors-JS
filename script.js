@@ -76,3 +76,10 @@ while (true) {
 }
 
 let result = playRound(humanChoice, computerChoice);
+
+if (result === 1) {
+    humanScore++;
+}
+else if (result === 0) {
+    computerScore++;
+}
