@@ -63,55 +63,32 @@ function playRound(humanChoice, computerChoice) {
 }
 
 // Variables
-let humanScore = 0;
-let computerScore = 0;
+function startGame() {
+    console.clear();
+    console.log("The game is first to 5. Good luck and beat that computer!");
 
-let humanChoice = 0;
-let computerChoice = 0;
+    let humanScore = 0;
+    let computerScore = 0;
 
-console.log("The game is a first to 5. Goodluck and beat that computer!");
-let result = 0;
+    while (humanScore < 5 && computerScore < 5) {   
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        let result = playRound(humanChoice, computerChoice);
 
-// Main game loop
-while (humanScore < 5 && computerScore < 5) {   
-
-    // Ensures valid user input
-    while (true) {
-        humanChoice = getHumanChoice();
-        if (humanChoice >= 0 && humanChoice <= 2) {
-            break;
+        if (result === 1) {
+            humanScore++;
+        } else if (result === 0) {
+            computerScore++;
         }
-        else {
-            console.log("invalid input. enter the value again.");
-        }
+
+        console.log(`Score: You ${humanScore} - Computer ${computerScore}`);
     }
 
-    // Assigns a random value to computerChoice
-    computerChoice = getComputerChoice();
-
-    // Assigns the game result to result
-    result = playRound(humanChoice, computerChoice);
-
-    // Increases scores based on the victor
-    if (result === 1) {
-        humanScore++;
-    }
-    else if (result === 0) {
-        computerScore++;
+    if (humanScore === 5) {
+        console.log("🎉 YOU WIN!! 🎉");
+    } else {
+        console.log("💀 Computer wins... Better luck next time!");
     }
 
-    console.log("Score: ");
-    console.log("You: ", humanScore, " Computer: ", computerScore);
+    console.log(`Final Score: You ${humanScore} - Computer ${computerScore}`);
 }
-
-// Outputs a message based on the human and computer scores
-if (humanScore === 5) {
-    console.log("YOU WIN!!");
-}
-else {
-    console.log("computer wins...");
-}
-
-console.log ("Final Score: ");
-console.log ("You: ", humanScore);
-console.log("Computer: ", computerScore);
