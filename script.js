@@ -7,7 +7,27 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    
+    console.log("You picked: ");
+    if (humanChoice === 0) {
+        console.log("Rock!");
+    }
+    else if (humanChoice === 1) {
+        console.log("Paper!");
+    } 
+    else {
+        console.log("Scissors!");
+    }
+
+    console.log("Computer picked: ");
+    if (computerChoice === 0) {
+        console.log("Rock!");
+    }
+    else if (computerChoice === 1) {
+        console.log("Paper!");
+    }
+    else {
+        console.log("Scissors!");
+    }
 }
 
 let humanScore = 0;
