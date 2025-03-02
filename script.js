@@ -7,11 +7,23 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-
+    
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+let humanChoice = 0;
+let computerChoice = getComputerChoice();
+
+while (true) {
+    humanChoice = getHumanChoice();
+    if (humanChoice >= 0 && humanChoice <= 2) {
+        break;
+    }
+    else {
+        console.log("invalid input. enter the value again.");
+    }
+}
+
+playRound(humanChoice, computerChoice);
