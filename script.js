@@ -75,11 +75,15 @@ while (true) {
     }
 }
 
-let result = playRound(humanChoice, computerChoice);
+let result = 0;
 
-if (result === 1) {
-    humanScore++;
-}
-else if (result === 0) {
-    computerScore++;
+while (humanScore < 5 || computerScore < 5) {
+    result = playRound(humanChoice, computerChoice);
+    
+    if (result === 1) {
+        humanScore++;
+    }
+    else if (result === 0) {
+        computerScore++;
+    }
 }
