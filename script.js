@@ -6,6 +6,10 @@ function getHumanChoice() {
     return parseInt(prompt("Enter your choice from 0 to 2. (0 = rock) (1 = paper) (2 = scissors): "));
 }
 
+function playRound(humanChoice, computerChoice) {
+
+}
+
 let humanScore = 0;
 let computerScore = 0;
 
