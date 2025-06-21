@@ -1,6 +1,13 @@
 const optionRock = document.querySelector("#option-rock");
 const optionPaper = document.querySelector("#option-paper");
 const optionScissors = document.querySelector("#option-scissors");
+const choiceBoxes = document.querySelectorAll(".choice-box");
+const humanWinText = document.querySelector("#player-win-text");
+const computerWinText = document.querySelector("#computer-win-text");
+const humanChoiceBox = document.querySelector("#player-choice");
+const computerChoiceBox = document.querySelector("#computer-choice");
+const humanChoiceImg = document.querySelector("#player-choice-img");
+const computerChoiceImg = document.querySelector("#computer-choice-img");
 const humanScoreUI = document.querySelector("#player-score");
 const computerScoreUI = document.querySelector("#computer-score"); 
 
@@ -16,57 +23,113 @@ function getHumanChoice() {
 
 // Compares the inputs and returns the results: (0 = loss) (1 = win) (2 = draw)
 function playRound() {
-    computerChoice = getComputerChoice();
-
-    console.log("You picked: ");
     if (humanChoice === 0) {
-        console.log("Rock!");
+        humanChoiceBox.setAttribute("style", "background-color: #FF5D5D");
+        humanChoiceImg.src = 'images/rock.webp';
     }
     else if (humanChoice === 1) {
-        console.log("Paper!");
+        humanChoiceBox.setAttribute("style", "background-color: #64DDEF");
+        humanChoiceImg.src = 'images/paper.webp';
     } 
     else {
-        console.log("Scissors!");
+        humanChoiceBox.setAttribute("style", "background-color: #FFE74E");
+        humanChoiceImg.src = 'images/scissors.webp';
     }
 
-    console.log("Computer picked: ");
     if (computerChoice === 0) {
-        console.log("Rock!");
+        computerChoiceBox.setAttribute("style", "background-color: #FF5D5D");
+        computerChoiceImg.src = 'images/rock.webp';
     }
     else if (computerChoice === 1) {
-        console.log("Paper!");
+        computerChoiceBox.setAttribute("style", "background-color: #64DDEF");
+        computerChoiceImg.src = 'images/paper.webp';
     }
     else {
-        console.log("Scissors!");
+        computerChoiceBox.setAttribute("style", "background-color: #FFE74E");
+        computerChoiceImg.src = 'images/scissors.webp';
     }
 
+    choiceBoxes.forEach((box)=> {
+        box.style.display = 'block';
+    });
+
+    humanWinText.style.display = 'none';
+    computerWinText.style.display = 'none';
+
     if (humanChoice === computerChoice) {
-        console.log("It's a Draw! Nobody gets the points...");
         return 2;
     }
     else if (humanChoice === 0 && computerChoice === 1) {
-        console.log("Computer Wins! +1 for Computer...");
+        computerWinText.style.display = 'flex';
         return 0;
     }
     else if (humanChoice === 0 && computerChoice === 2) {
-        console.log("You Win! +1 for You!");
+        humanWinText.style.display = 'flex';
         return 1;
     }
     else if (humanChoice === 1 && computerChoice === 0) {
-        console.log("You Win! +1 for You!");
+        humanWinText.style.display = 'flex';
         return 1;
     }
     else if (humanChoice === 1 && computerChoice === 2) {
-        console.log("Computer Wins! +1 for Computer...");
+        computerWinText.style.display = 'flex';
         return 0;
     }
     else if (humanChoice === 2 && computerChoice === 0) {
-        console.log("Computer Wins! +1 for Computer...");
+        computerWinText.style.display = 'flex';
         return 0;
     }
     else {
-        console.log("You Win! +1 for You!");
+        humanWinText.style.display = 'flex';
         return 1;
+    }
+}
+
+function updateScores() {
+    if (result === 1) {
+        humanScore++;
+        humanScoreUI.textContent = humanScore;
+    }
+    else if (result === 0) {
+        computerScore++;
+        computerScoreUI.textContent = computerScore;
+    }
+}
+
+function checkWin() {
+    if (humanScore === 5) {
+        return 1;
+    }
+    else if (computerScore === 5) {
+        return 2;
+    }
+    return 0;
+}
+
+function reset() {
+    humanScore = 0;
+    computerScore = 0;
+
+    humanScoreUI.textContent = 0;
+    computerScoreUI.textContent = 0;
+}
+
+function mainGame() {
+    if (stop) {
+        return;
+    }
+
+    computerChoice = getComputerChoice();
+    result = playRound();
+    updateScores();
+    win = checkWin();
+    if (win == 1) {
+        stop = true;
+        alert("Player won!!");
+    }
+    else if (win == 2) {
+        stop = true;
+        alert("Computer won!!");
     }
 }
 
@@ -77,56 +140,33 @@ let computerScore = 0;
 let humanChoice = 0;
 let computerChoice = 0;
 
-console.log("The game is a first to 5. Goodluck and beat that computer!");
 let result = 0;
-
-// Main game loop
-// while (humanScore < 5 && computerScore < 5) {   
-
-//     // Ensures valid user input
-
-
-//     // Assigns a random value to computerChoice
-//     computerChoice = getComputerChoice();
-
-//     // Assigns the game result to result
-//     result = playRound(humanChoice, computerChoice);
-
-//     // Increases scores based on the victor
-//     if (result === 1) {
-//         humanScore++;
-//     }
-//     else if (result === 0) {
-//         computerScore++;
-//     }
-
-//     console.log("Score: ");
-//     console.log("You: ", humanScore, " Computer: ", computerScore);
-// }
-
-// Outputs a message based on the human and computer scores
-if (humanScore === 5) {
-    console.log("YOU WIN!!");
-}
-else {
-    console.log("computer wins...");
-}
-
-console.log ("Final Score: ");
-console.log ("You: ", humanScore);
-console.log("Computer: ", computerScore);
+let win = 0;
+let stop = false;
 
 optionRock.addEventListener("click", () => {
+    if (stop) {
+        stop = false;
+        reset();
+    }
     humanChoice = 0;
-    playRound();
+    mainGame();
 });
 
 optionPaper.addEventListener("click", () => {
+    if (stop) {
+        stop = false;
+        reset();
+    }
     humanChoice = 1;
-    playRound();
+    mainGame();
 });
 
 optionScissors.addEventListener("click", () => {
+    if (stop) {
+        stop = false;
+        reset();
+    }
     humanChoice = 2;
-    playRound();
+    mainGame();
 });
