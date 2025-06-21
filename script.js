@@ -1,3 +1,9 @@
+const optionRock = document.querySelector("#option-rock");
+const optionPaper = document.querySelector("#option-paper");
+const optionScissors = document.querySelector("#option-scissors");
+const humanScoreUI = document.querySelector("#player-score");
+const computerScoreUI = document.querySelector("#computer-score"); 
+
 // Returns a random value from 0 - 2 for the computer's choice
 function getComputerChoice() {
     return Math.floor(Math.random() * 3);
@@ -9,7 +15,9 @@ function getHumanChoice() {
 }
 
 // Compares the inputs and returns the results: (0 = loss) (1 = win) (2 = draw)
-function playRound(humanChoice, computerChoice) {
+function playRound() {
+    computerChoice = getComputerChoice();
+
     console.log("You picked: ");
     if (humanChoice === 0) {
         console.log("Rock!");
@@ -76,15 +84,7 @@ let result = 0;
 // while (humanScore < 5 && computerScore < 5) {   
 
 //     // Ensures valid user input
-//     while (true) {
-//         humanChoice = getHumanChoice();
-//         if (humanChoice >= 0 && humanChoice <= 2) {
-//             break;
-//         }
-//         else {
-//             console.log("invalid input. enter the value again.");
-//         }
-//     }
+
 
 //     // Assigns a random value to computerChoice
 //     computerChoice = getComputerChoice();
@@ -115,3 +115,18 @@ else {
 console.log ("Final Score: ");
 console.log ("You: ", humanScore);
 console.log("Computer: ", computerScore);
+
+optionRock.addEventListener("click", () => {
+    humanChoice = 0;
+    playRound();
+});
+
+optionPaper.addEventListener("click", () => {
+    humanChoice = 1;
+    playRound();
+});
+
+optionScissors.addEventListener("click", () => {
+    humanChoice = 2;
+    playRound();
+});
