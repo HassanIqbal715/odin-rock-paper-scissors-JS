@@ -73,36 +73,36 @@ console.log("The game is a first to 5. Goodluck and beat that computer!");
 let result = 0;
 
 // Main game loop
-while (humanScore < 5 && computerScore < 5) {   
+// while (humanScore < 5 && computerScore < 5) {   
 
-    // Ensures valid user input
-    while (true) {
-        humanChoice = getHumanChoice();
-        if (humanChoice >= 0 && humanChoice <= 2) {
-            break;
-        }
-        else {
-            console.log("invalid input. enter the value again.");
-        }
-    }
+//     // Ensures valid user input
+//     while (true) {
+//         humanChoice = getHumanChoice();
+//         if (humanChoice >= 0 && humanChoice <= 2) {
+//             break;
+//         }
+//         else {
+//             console.log("invalid input. enter the value again.");
+//         }
+//     }
 
-    // Assigns a random value to computerChoice
-    computerChoice = getComputerChoice();
+//     // Assigns a random value to computerChoice
+//     computerChoice = getComputerChoice();
 
-    // Assigns the game result to result
-    result = playRound(humanChoice, computerChoice);
+//     // Assigns the game result to result
+//     result = playRound(humanChoice, computerChoice);
 
-    // Increases scores based on the victor
-    if (result === 1) {
-        humanScore++;
-    }
-    else if (result === 0) {
-        computerScore++;
-    }
+//     // Increases scores based on the victor
+//     if (result === 1) {
+//         humanScore++;
+//     }
+//     else if (result === 0) {
+//         computerScore++;
+//     }
 
-    console.log("Score: ");
-    console.log("You: ", humanScore, " Computer: ", computerScore);
-}
+//     console.log("Score: ");
+//     console.log("You: ", humanScore, " Computer: ", computerScore);
+// }
 
 // Outputs a message based on the human and computer scores
 if (humanScore === 5) {
