@@ -17,36 +17,45 @@
             </div>
             <div class="header-text">VS</div>
             <div class="player">
-                <div class="player-box large-box" id="computer-name">Computer</div>
                 <div class="player-box small-box" id="computer-score">0</div>
+                <div class="player-box large-box" id="computer-name">Computer</div>
             </div>
         </div>
 
         <div class="main-box">
             <div class="choice-box">
-                <div class="main-text">Player wins!!</div>
+                <div class="main-text" id="player-win-text">Player wins!!</div>
                 <div class="choice" id="player-choice">
-                    <img id="player-choice-image">
+                    <img class="choice-image" id="player-choice-image">
                 </div>
             </div>
             <div class="choice-box">
-                <div class="main-text">Computer wins!!</div>
+                <div class="main-text" id="computer-win-text">Computer wins!!</div>
                 <div class="choice" id="computer-choice">
-                    <img id="computer-choice-image">
+                    <img class="choice-image" id="computer-choice-image">
                 </div>
             </div>
         </div>
 
         <div class="player-options">
-            <button class="player-option" id="option-rock">
-                <img class="player-option-img" src="images/rock.webp">
-            </button>
-            <button class="player-option" id="option-paper">
-                <img class="player-option-img" src="images/paper.webp">
-            </button>
-            <button class="player-option" id="option-scissors">
-                <img class="player-option-img" src="images/scissors.webp">
-            </button>
+            <div>
+                <button class="player-option" id="option-rock">
+                    <img class="player-option-img" src="images/rock.webp">
+                </button>
+                <div class="main-text">Rock</div>
+            </div>
+            <div>
+                <button class="player-option" id="option-paper">
+                    <img class="player-option-img" src="images/paper.webp">
+                </button>
+                <div class="main-text">Paper</div>
+            </div>
+            <div>
+                <button class="player-option" id="option-scissors">
+                    <img class="player-option-img" src="images/scissors.webp">
+                </button>
+                <div class="main-text">Scissors</div>
+            </div>
         </div>
     </div>
 </body>
